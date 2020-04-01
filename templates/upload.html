@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+{% block messages %}
+   {{super()}}
+   
+{% endblock %}
+{% block page_body %}
+    
+    <script>
+
+        $("#file-picker").change(function(){
+
+            var input = document.getElementById('file-picker');
+
+            for (var i=0; i<input.files.length; i++)
+            {
+            //koala.jpg, koala.JPG substring(index) lastIndexOf('a') koala.1.jpg
+                var ext= input.files[i].name.substring(input.files[i].name.lastIndexOf('.')+1).toLowerCase()
+
+                if ((ext == 'jpg') || (ext == 'png'))
+                {
+                    $("#msg").text("Files are supported")
+                }
+                else
+                {
+                    $("#msg").text("Files are NOT supported")
+                    document.getElementById("file-picker").value ="";
+                }
+
+            }
+
+
+        } );
+
+    </script>
+    <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data" >
+        <div class="form-group">
+        
+        <strong>Upload Image file and Disease name:</strong><br>
+        <label for="file-pickere">Choose an Image file:</label>
+        <input id="file-picker" type="file" name="file" accept="image/*" multiple>
+        <div id="msg"></div>
+        <label for="disease">Choose a Disease:</label>
+        <select id="disease" name="disease">
+            <option value="Atelectasis">Atelectasis</option>
+            <option value="Cardiomegaly">Cardiomegaly</option>
+            <option value="Effusion">Effusion</option>
+            <option value="Infiltration">Infiltration</option>
+            <option value="Nodule">Nodule</option>
+            <option value="Pneumonia">Pneumonia</option>
+            <option value="Pneumothorax">Pneumothorax</option>
+
+
+        </select>
+        <input type="submit" value="Upload!" id="upload-button">
+
+    </form>
+    
+
+{% endblock %}
