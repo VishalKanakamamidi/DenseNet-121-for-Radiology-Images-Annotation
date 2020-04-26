@@ -17,7 +17,7 @@ Atelectasis', 'Cardiomegaly', 'Effusion', 'Infiltration', 'Mass', 'Nodule', 'Pne
   ![alt text](Output.png)<br/>
   <br/>
    
-  You can also refer to this video in youtube for implementation - https://youtu.be/NInJLWiycJk
+  You can also refer to this video in youtube for implementation - https://youtu.be/S54008QM6tw
   
   
   
